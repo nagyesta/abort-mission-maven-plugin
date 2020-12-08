@@ -23,10 +23,10 @@ jobs:
           java-version: 8
       - name: Configure Git user
         run: |
-          git config user.email "nagyesta@gmail.com"
+          git config user.email ${{ secrets.EMAIL }}
           git config user.name "Esta Nagy"
       - name: Build with Maven
-        run: ./mvnw -B release:prepare release:perform
+        run: ./mvnw -B scm:tag clean deploy
         env:
           GITHUB_TOKEN: ${{ secrets.PUBLISH_KEY }}
       - name: Upload coverage to Codecov
