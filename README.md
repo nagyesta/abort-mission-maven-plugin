@@ -5,7 +5,7 @@
 [![latest-release](https://img.shields.io/github/v/tag/nagyesta/abort-mission-maven-plugin?color=blue&logo=git&label=releases&sort=semver)](https://github.com/nagyesta/abort-mission-maven-plugin/releases)
 [![JavaCI](https://img.shields.io/github/workflow/status/nagyesta/abort-mission-maven-plugin/JavaCI?logo=github)](https://img.shields.io/github/workflow/status/nagyesta/abort-mission-maven-plugin/JavaCI?logo=github)
 
-[![codecov](https://img.shields.io/codecov/c/github/nagyesta/abort-mission-maven-plugin?label=Coverage&token=I832ZCIONI)](https://img.shields.io/codecov/c/github/nagyesta/abort-mission-maven-plugin?label=Coverage&token=I832ZCIONI)
+[![codecov](https://img.shields.io/codecov/c/github/nagyesta/abort-mission-maven-plugin?label=Coverage&token=9L48Q6M9HN)](https://img.shields.io/codecov/c/github/nagyesta/abort-mission-maven-plugin?label=Coverage&token=9L48Q6M9HN)
 [![code-climate-maintainability](https://img.shields.io/codeclimate/maintainability/nagyesta/abort-mission-maven-plugin?logo=code%20climate)](https://img.shields.io/codeclimate/maintainability/nagyesta/abort-mission-maven-plugin?logo=code%20climate)
 [![code-climate-tech-debt](https://img.shields.io/codeclimate/tech-debt/nagyesta/abort-mission-maven-plugin?logo=code%20climate)](https://img.shields.io/codeclimate/tech-debt/nagyesta/abort-mission-maven-plugin?logo=code%20climate)
 [![last_commit](https://img.shields.io/github/last-commit/nagyesta/abort-mission-maven-plugin?logo=git)](https://img.shields.io/github/last-commit/nagyesta/abort-mission-maven-plugin?logo=git)
