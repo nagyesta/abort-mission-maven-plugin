@@ -21,6 +21,10 @@ jobs:
         uses: actions/setup-java@d202f5dbf7256730fb690ec59f6381650114feb2
         with:
           java-version: 8
+      - name: Configure Git user
+        run: |
+          git config user.email "nagyesta@gmail.com"
+          git config user.name "Esta Nagy"
       - name: Build with Maven
         run: ./mvnw -B release:prepare release:perform
         env:
