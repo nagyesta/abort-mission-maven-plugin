@@ -18,9 +18,11 @@ This project provides Maven integration for Abort-Mission report generation.
 
 ## Installation
 
-Abort-Mission is distributed using Github Packages for now. Please read
-[this page](https://docs.github.com/en/free-pro-team@latest/packages/using-github-packages-with-your-projects-ecosystem)
-to see how you need to configure your build ecosystem.
+Abort-Mission can be downloaded from a few Maven repositories. Please head to
+[this page](https://github.com/nagyesta/abort-mission/wiki/Configuring-our-repository-for-your-build-system)
+to find out more.
+
+**NOTE:** Please don't forget, that this is a plugin, you will need to add the repository as a plugin repository.
 
 ### Minimal configuration
 
