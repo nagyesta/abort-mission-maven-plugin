@@ -6,6 +6,13 @@ name: JavaCI-PR
 on:
   pull_request:
     branches: [ main ]
+    paths-ignore:
+      - 'README.md'
+      - '**/README.md'
+      - 'SECURITY.md'
+      - 'LICENSE'
+      - '.github/ISSUE_TEMPLATE/**'
+      - '.github/assets/**'
 
 jobs:
   build:
