@@ -17,16 +17,44 @@ jobs:
       - uses: actions/checkout@a81bbbf8298c0fa03ea29cdc473d45769f953675
         with:
           fetch-depth: 0
-      - name: Set up JDK 8
-        uses: actions/setup-java@d202f5dbf7256730fb690ec59f6381650114feb2
-        with:
-          java-version: 8
       - name: Configure Git user
         run: |
           git config user.email ${{ secrets.EMAIL }}
           git config user.name "Esta Nagy"
-      - name: Build with Maven
-        run: ./mvnw -B scm:tag clean deploy
+      - name: Decode key
+        run: |
+          mkdir -p ~/.gnupg/
+          echo -e "${{ secrets.OSSRH_GPG_SECRET_KEY }}" | base64 --decode > ~/.gnupg/secring.gpg
+      - name: Set up Java for publishing to Maven Central Repository
+        uses: actions/setup-java@d202f5dbf7256730fb690ec59f6381650114feb2
+        with:
+          java-version: 1.8
+          server-id: ossrh
+          server-username: MAVEN_USERNAME
+          server-password: MAVEN_PASSWORD
+      - name: Publish to the Maven Central Repository
+        run: >
+          ./mvnw
+          -Dgpg.keyname=${{ secrets.SIGNING_KEY_ID }}
+          -Dgpg.passphrase=${{ secrets.OSSRH_GPG_SECRET_KEY_PASSWORD }}
+          -Dgpg.secretKeyring=$(echo ~/.gnupg/secring.gpg)
+          -B clean deploy
+          -P deploy-ossrh
+        env:
+          MAVEN_USERNAME: ${{ secrets.OSSRH_USER }}
+          MAVEN_PASSWORD: ${{ secrets.OSSRH_PASS }}
+      - name: Set up Java for publishing to GitHub Packages
+        uses: actions/setup-java@d202f5dbf7256730fb690ec59f6381650114feb2
+        with:
+          java-version: 1.8
+      - name: Publish to GitHub Packages
+        run: >
+          ./mvnw
+          -Dgpg.keyname=${{ secrets.SIGNING_KEY_ID }}
+          -Dgpg.passphrase=${{ secrets.OSSRH_GPG_SECRET_KEY_PASSWORD }}
+          -Dgpg.secretKeyring=$(echo ~/.gnupg/secring.gpg)
+          -B scm:tag deploy
+          -P deploy-github
         env:
           GITHUB_TOKEN: ${{ secrets.PUBLISH_KEY }}
       - name: Upload coverage to Codecov
