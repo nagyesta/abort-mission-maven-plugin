@@ -22,7 +22,7 @@ jobs:
         with:
           java-version: 8
       - name: Build with Maven
-        run: ./mvnw clean install
+        run: ./mvnw -B clean install
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@7d5dfa54903bd909319c580a00535b483d1efcf3
         with:
