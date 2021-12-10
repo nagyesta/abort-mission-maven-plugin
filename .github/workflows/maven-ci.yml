@@ -40,7 +40,7 @@ jobs:
           -Dgpg.secretKeyring=$(echo ~/.gnupg/secring.gpg)
           -B clean install
       - name: Upload coverage to Codecov
-        uses: codecov/codecov-action@7d5dfa54903bd909319c580a00535b483d1efcf3
+        uses: codecov/codecov-action@11d69070bf0bb19a473235e011c7890707db52de # v2.1
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
           file: ./target/site/jacoco/jacoco.xml
