@@ -30,7 +30,7 @@
         <junit-jupiter.version>5.8.2</junit-jupiter.version>
         <junit.version>4.13.2</junit.version>
         <mockito-all.version>1.10.19</mockito-all.version>
-        <checkstyle.version>9.3</checkstyle.version>
+        <checkstyle.version>10.0</checkstyle.version>
         <commons-compress.version>1.21</commons-compress.version>
         <guava.version>31.0.1-jre</guava.version>
     </properties>
