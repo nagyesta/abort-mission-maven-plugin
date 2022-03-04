@@ -32,7 +32,7 @@
         <mockito-all.version>1.10.19</mockito-all.version>
         <checkstyle.version>9.3</checkstyle.version>
         <commons-compress.version>1.21</commons-compress.version>
-        <guava.version>31.0.1-jre</guava.version>
+        <guava.version>31.1-jre</guava.version>
     </properties>
 
     <scm>
