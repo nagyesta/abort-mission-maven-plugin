@@ -2,6 +2,11 @@
   "extends": [
     "config:base"
   ],
+  "github-actions": {
+    "pinDigests": true
+  },
+  "automerge": true,
+  "automergeStrategy": "fast-forward",
   "ignorePaths": [
     ".github/workflows/**"
   ]
