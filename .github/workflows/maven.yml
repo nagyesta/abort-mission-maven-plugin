@@ -18,8 +18,6 @@ on:
       - '.whitesource'
       - 'pom.xml'
 
-permissions: read-all
-
 jobs:
   build:
 
