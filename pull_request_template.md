@@ -16,7 +16,7 @@ __Issue:__ <#issue number>
 
 - [ ] I have rebased my branch
 - [ ] My commit message is meaningful
-- [ ] The commit messages use semantic versioning: ```{major}```, ```{minor}``` or ```{patch}```
+- [ ] I have updated the version in the POM
 - [ ] The changes are focusing on the issue at hand
 - [ ] Tests are passing
 - [ ] I have maintained or increased test coverage
