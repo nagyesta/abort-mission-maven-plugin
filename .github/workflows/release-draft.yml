@@ -1,5 +1,14 @@
 name: CreateRelease
 on:
+  workflow_dispatch:
+    inputs:
+      execution:
+        description: 'Type of execution'
+        required: true
+        default: 'Manual'
+        type: choice
+        options:
+          - Manual
   push:
     tags:
       - v*
