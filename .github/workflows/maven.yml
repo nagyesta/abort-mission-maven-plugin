@@ -42,7 +42,7 @@ jobs:
       - name: Set up Java for publishing to Maven Central Repository
         uses: actions/setup-java@f0bb91606209742fe3ea40199be2f3ef195ecabf # tag=v2.5.0
         with:
-          distribution: adopt
+          distribution: temurin
           java-version: 8
           server-id: ossrh
           server-username: MAVEN_USERNAME
@@ -61,7 +61,7 @@ jobs:
       - name: Set up Java for publishing to GitHub Packages
         uses: actions/setup-java@f0bb91606209742fe3ea40199be2f3ef195ecabf # tag=v2.5.0
         with:
-          distribution: adopt
+          distribution: temurin
           java-version: 8
       - name: Publish to GitHub Packages
         run: >
