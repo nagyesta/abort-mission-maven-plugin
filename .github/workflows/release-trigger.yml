@@ -38,7 +38,7 @@ jobs:
         uses: actions/setup-java@f0bb91606209742fe3ea40199be2f3ef195ecabf # tag=v2.5.0
         with:
           distribution: temurin
-          java-version: 8
+          java-version: 11
       - name: "Update trigger"
         if: ${{ steps.check.outputs.has_tag == 0 || github.event.inputs.execution == 'Manual' }}
         run: |
