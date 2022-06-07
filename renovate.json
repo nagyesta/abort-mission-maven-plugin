@@ -1,12 +1,15 @@
 {
   "extends": [
-    "config:base"
+    "config:base",
+    ":gitSignOff"
   ],
+  "assignees": [
+    "nagyesta"
+  ],
+  "assigneesSampleSize": 1,
   "github-actions": {
     "pinDigests": true
   },
-  "automerge": true,
-  "automergeStrategy": "fast-forward",
   "ignorePaths": [
     ".github/workflows/**"
   ]
