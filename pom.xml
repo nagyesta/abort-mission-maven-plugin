@@ -31,7 +31,7 @@
         <junit.version>4.13.2</junit.version>
         <mockito-all.version>1.10.19</mockito-all.version>
         <checkstyle.version>9.3</checkstyle.version>
-        <commons-compress.version>1.21</commons-compress.version>
+        <commons-compress.version>1.22</commons-compress.version>
         <commons-io.version>2.11.0</commons-io.version>
         <guava.version>31.1-jre</guava.version>
     </properties>
