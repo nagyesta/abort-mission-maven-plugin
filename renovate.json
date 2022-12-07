@@ -9,8 +9,5 @@
   "assigneesSampleSize": 1,
   "github-actions": {
     "pinDigests": true
-  },
-  "ignorePaths": [
-    ".github/workflows/**"
-  ]
+  }
 }
