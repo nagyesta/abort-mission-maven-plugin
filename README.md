@@ -4,7 +4,7 @@
 [![Java version](https://img.shields.io/badge/Java%20version-11-yellow?logo=java)](https://img.shields.io/badge/Java%20version-11-yellow?logo=java)
 [![latest-release](https://img.shields.io/github/v/tag/nagyesta/abort-mission-maven-plugin?color=blue&logo=git&label=releases&sort=semver)](https://github.com/nagyesta/abort-mission-maven-plugin/releases)
 [![Maven Central](https://img.shields.io/maven-central/v/com.github.nagyesta.abort-mission/abort-mission-maven-plugin?logo=apache-maven)](https://search.maven.org/artifact/com.github.nagyesta.abort-mission/abort-mission-maven-plugin)
-[![JavaCI](https://img.shields.io/github/workflow/status/nagyesta/abort-mission-maven-plugin/JavaCI?logo=github)](https://img.shields.io/github/workflow/status/nagyesta/abort-mission-maven-plugin/JavaCI?logo=github)
+[![JavaCI](https://img.shields.io/github/actions/workflow/status/nagyesta/abort-mission-maven-plugin/maven.yml?logo=github&branch=main)](https://github.com/nagyesta/abort-mission-maven-plugin/actions/workflows/maven.yml)
 
 [![codecov](https://img.shields.io/codecov/c/github/nagyesta/abort-mission-maven-plugin?label=Coverage&token=9L48Q6M9HN)](https://img.shields.io/codecov/c/github/nagyesta/abort-mission-maven-plugin?label=Coverage&token=9L48Q6M9HN)
 [![code-climate-maintainability](https://img.shields.io/codeclimate/maintainability/nagyesta/abort-mission-maven-plugin?logo=code%20climate)](https://img.shields.io/codeclimate/maintainability/nagyesta/abort-mission-maven-plugin?logo=code%20climate)
