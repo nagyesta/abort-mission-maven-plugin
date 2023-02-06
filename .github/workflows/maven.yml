@@ -58,21 +58,6 @@ jobs:
         env:
           MAVEN_USERNAME: ${{ secrets.OSSRH_USER }}
           MAVEN_PASSWORD: ${{ secrets.OSSRH_PASS }}
-      - name: Set up Java for publishing to GitHub Packages
-        uses: actions/setup-java@1df8dbefe2a8cbc99770194893dd902763bee34b # v3.9.0
-        with:
-          distribution: temurin
-          java-version: 11
-      - name: Publish to GitHub Packages
-        run: >
-          ./mvnw
-          -Dgpg.keyname=${{ secrets.SIGNING_KEY_ID }}
-          -Dgpg.passphrase=${{ secrets.OSSRH_GPG_SECRET_KEY_PASSWORD }}
-          -Dgpg.secretKeyring=$(echo ~/.gnupg/secring.gpg)
-          -B scm:tag deploy
-          -P deploy-github
-        env:
-          GITHUB_TOKEN: ${{ secrets.PUBLISH_KEY }}
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@d9f34f8cd5cb3b3eb79b3e4b5dae3a16df499a70 # tag=v3.1.1
         with:
