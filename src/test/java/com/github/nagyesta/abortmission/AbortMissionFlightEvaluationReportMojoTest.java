@@ -70,11 +70,60 @@ class AbortMissionFlightEvaluationReportMojoTest {
         final DependencyResolver dependencyResolver = mockDependencyResolver(raw, projectBuildingRequest, artifactResults);
 
         final Process process = mock(Process.class);
+        when(process.waitFor()).thenReturn(0);
         final AbortMissionFlightEvaluationReportMojo underTest = spy(raw);
         final List<String> commandTokens = mockProcessToCaptureCommandTokens(process, underTest);
 
         //when
         underTest.execute();
+
+        //then
+        final DefaultDependableCoordinate coordinatesUsed = raw.missionReportCoordinates();
+        assertEquals(coordinate.getGroupId(), coordinatesUsed.getGroupId());
+        assertEquals(coordinate.getArtifactId(), coordinatesUsed.getArtifactId());
+        assertEquals(coordinate.getType(), coordinatesUsed.getType());
+        assertEquals(coordinate.getVersion(), coordinatesUsed.getVersion());
+        assertIterableEquals(expectedCommandTokens, commandTokens);
+
+        final InOrder inOrder = inOrder(underTest, session, dependencyResolver, process);
+        inOrder.verify(underTest).execute();
+        inOrder.verify(session).getProjectBuildingRequest();
+        inOrder.verify(dependencyResolver)
+                .resolveDependencies(same(projectBuildingRequest), any(DependableCoordinate.class), any(PatternExclusionsFilter.class));
+        inOrder.verify(underTest).createProcess(any());
+        inOrder.verify(process).getInputStream();
+        inOrder.verify(process).waitFor();
+    }
+
+    @Test
+    void testExecuteShouldThrowExceptionWhenJarProcessExitsWithNonZeroStatus()
+            throws DependencyResolverException, IOException, MojoExecutionException, InterruptedException {
+        //given
+        final String jarVersion = "1.0.0";
+        final boolean relaxed = true;
+        final List<ArtifactResult> artifactResults = Arrays.asList(
+                artifactResult(artifact(true, true, true)),
+                artifactResult(artifact(false, false, true)),
+                artifactResult(artifact(false, true, false)),
+                artifactResult(artifact(true, false, false)),
+                artifactResult(artifact(false, false, false))
+        );
+
+        final AbortMissionFlightEvaluationReportMojo raw = rawTestInstance(jarVersion, relaxed);
+
+        final List<String> expectedCommandTokens = expectedCommandTokens(relaxed);
+        final ProjectBuildingRequest projectBuildingRequest = mock(ProjectBuildingRequest.class);
+        final MavenSession session = mockSession(raw, projectBuildingRequest);
+        final DefaultDependableCoordinate coordinate = expectedCoordinates(jarVersion);
+        final DependencyResolver dependencyResolver = mockDependencyResolver(raw, projectBuildingRequest, artifactResults);
+
+        final Process process = mock(Process.class);
+        when(process.waitFor()).thenReturn(1);
+        final AbortMissionFlightEvaluationReportMojo underTest = spy(raw);
+        final List<String> commandTokens = mockProcessToCaptureCommandTokens(process, underTest);
+
+        //when
+        assertThrows(MojoExecutionException.class, underTest::execute);
 
         //then
         final DefaultDependableCoordinate coordinatesUsed = raw.missionReportCoordinates();
