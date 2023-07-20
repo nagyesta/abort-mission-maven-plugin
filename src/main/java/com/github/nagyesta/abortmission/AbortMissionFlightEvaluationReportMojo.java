@@ -25,6 +25,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 /**
  * Mojo downloading and executing the Abort-Mission Flight Evaluation Report module.
@@ -71,10 +72,17 @@ public class AbortMissionFlightEvaluationReportMojo extends AbstractMojo {
             getLog().info("Executing command: " + commands);
             final Process javaProcess = createProcess(commands);
             try (BufferedReader reader = new BufferedReader(new InputStreamReader(javaProcess.getInputStream()))) {
-                reader.lines().forEach(getLog()::info);
+                final List<String> logLines = reader.lines().collect(Collectors.toList());
+                final int statusCode = javaProcess.waitFor();
+                if (statusCode != 0) {
+                    logLines.forEach(getLog()::error);
+                    getLog().error("Execution failed with status code: " + statusCode);
+                    throw new IllegalStateException("Execution failed, please check logs for more details.");
+                } else {
+                    logLines.forEach(getLog()::info);
+                    getLog().info("Execution completed.");
+                }
             }
-            javaProcess.waitFor();
-            getLog().info("Execution completed.");
         } catch (final Exception e) {
             throw new MojoExecutionException("Error generating report: " + outputFile, e);
         }
