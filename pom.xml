@@ -4,15 +4,15 @@
     <groupId>com.github.nagyesta.abort-mission</groupId>
     <artifactId>abort-mission-maven-plugin</artifactId>
     <packaging>maven-plugin</packaging>
-    <version>2.1.6</version>
+    <version>3.0.0</version>
     <description>Maven Mojo for Abort-Mission report generation support</description>
     <name>abort-mission-maven-plugin Maven Mojo</name>
     <url>https://github.com/nagyesta/abort-mission-maven-plugin/</url>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <maven.compiler.target>11</maven.compiler.target>
-        <maven.compiler.source>11</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
+        <maven.compiler.source>17</maven.compiler.source>
         <project.scm.id>github</project.scm.id>
         <tag>v${project.version}</tag>
         <basedir>${project.basedir}</basedir>
@@ -252,6 +252,9 @@
                         <version>${junit-jupiter.version}</version>
                     </dependency>
                 </dependencies>
+                <configuration>
+                    <argLine>--add-opens java.base/java.lang=ALL-UNNAMED</argLine>
+                </configuration>
             </plugin>
             <plugin>
                 <groupId>org.jacoco</groupId>
