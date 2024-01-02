@@ -1,7 +1,7 @@
 ![Abort-Mission](.github/assets/Abort-Mission-logo_export_transparent_640.png)
 
 [![GitHub license](https://img.shields.io/github/license/nagyesta/abort-mission-maven-plugin?color=informational)](https://raw.githubusercontent.com/nagyesta/abort-mission-maven-plugin/main/LICENSE)
-[![Java version](https://img.shields.io/badge/Java%20version-11-yellow?logo=java)](https://img.shields.io/badge/Java%20version-11-yellow?logo=java)
+[![Java version](https://img.shields.io/badge/Java%20version-17-yellow?logo=java)](https://img.shields.io/badge/Java%20version-17-yellow?logo=java)
 [![latest-release](https://img.shields.io/github/v/tag/nagyesta/abort-mission-maven-plugin?color=blue&logo=git&label=releases&sort=semver)](https://github.com/nagyesta/abort-mission-maven-plugin/releases)
 [![Maven Central](https://img.shields.io/maven-central/v/com.github.nagyesta.abort-mission/abort-mission-maven-plugin?logo=apache-maven)](https://search.maven.org/artifact/com.github.nagyesta.abort-mission/abort-mission-maven-plugin)
 [![JavaCI](https://img.shields.io/github/actions/workflow/status/nagyesta/abort-mission-maven-plugin/maven.yml?logo=github&branch=main)](https://github.com/nagyesta/abort-mission-maven-plugin/actions/workflows/maven.yml)
@@ -23,7 +23,8 @@ Abort-Mission can be downloaded from a few Maven repositories. Please head to
 [this page](https://github.com/nagyesta/abort-mission/wiki/Configuring-our-repository-for-your-build-system)
 to find out more.
 
-**NOTE:** Please don't forget, that this is a plugin, you will need to add the repository as a plugin repository.
+> [!NOTE]  
+> Please don't forget, that this is a plugin, you will need to add the repository as a plugin repository.
 
 ### Minimal configuration
 
