@@ -22,7 +22,7 @@
         <maven-aether-provider.version>3.3.9</maven-aether-provider.version>
         <maven-artifact-transfer.version>0.13.1</maven-artifact-transfer.version>
         <maven-checkstyle-plugin.version>3.3.1</maven-checkstyle-plugin.version>
-        <maven-gpg-plugin.version>3.2.2</maven-gpg-plugin.version>
+        <maven-gpg-plugin.version>3.2.3</maven-gpg-plugin.version>
         <maven-javadoc-plugin.version>3.6.3</maven-javadoc-plugin.version>
         <maven-source-plugin.version>3.3.1</maven-source-plugin.version>
         <jacoco-maven-plugin.version>0.8.12</jacoco-maven-plugin.version>
