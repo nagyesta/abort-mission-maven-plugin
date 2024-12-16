@@ -28,7 +28,7 @@
         <jacoco-maven-plugin.version>0.8.12</jacoco-maven-plugin.version>
         <maven-surefire-plugin.version>3.5.2</maven-surefire-plugin.version>
         <nexus.plugin.version>1.7.0</nexus.plugin.version>
-        <junit-jupiter.version>5.11.3</junit-jupiter.version>
+        <junit-jupiter.version>5.11.4</junit-jupiter.version>
         <junit.version>4.13.2</junit.version>
         <mockito-all.version>1.10.19</mockito-all.version>
         <checkstyle.version>9.3</checkstyle.version>
