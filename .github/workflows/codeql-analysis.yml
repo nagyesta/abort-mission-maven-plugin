@@ -71,7 +71,7 @@ jobs:
           distribution: temurin
           java-version: 17
       - name: Initialize CodeQL
-        uses: github/codeql-action/init@4e83f6b818d7c9f52143570963b2c7f7f055decb # v3.28.6
+        uses: github/codeql-action/init@17a820bf2e43b47be2c72b39cc905417bc1ab6d0 # v3.28.6
         with:
           languages: ${{ matrix.language }}
           # If you wish to specify custom queries, you can do so here or in a config file.
@@ -81,4 +81,4 @@ jobs:
       - name: Build with Maven
         run: ./mvnw clean compile
       - name: Perform CodeQL Analysis
-        uses: github/codeql-action/analyze@4e83f6b818d7c9f52143570963b2c7f7f055decb # v3.28.6
+        uses: github/codeql-action/analyze@17a820bf2e43b47be2c72b39cc905417bc1ab6d0 # v3.28.6
