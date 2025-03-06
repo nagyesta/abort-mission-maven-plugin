@@ -9,5 +9,24 @@
   "assigneesSampleSize": 1,
   "github-actions": {
     "pinDigests": true
-  }
+  },
+  "packageRules": [
+    {
+      "groupName": "Maven dependencies",
+      "matchPackageNames": [
+        "org.apache.maven:{/,}**",
+        "org.apache.maven.shared:{/,}**",
+        "org.apache.maven.plugin-tools:{/,}**"
+      ]
+    },
+    {
+      "groupName": "JUnit dependencies",
+      "matchPackageNames": [
+        "junit:{/,}**",
+        "org.junit.jupiter:{/,}**",
+        "org.junit.platform:{/,}**",
+        "org.junit.vintage:{/,}**"
+      ]
+    }
+  ]
 }
