@@ -3,29 +3,22 @@ package com.github.nagyesta.abortmission;
 import org.apache.maven.execution.MavenSession;
 import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.plugin.MojoExecutionException;
-import org.apache.maven.plugins.annotations.Component;
 import org.apache.maven.plugins.annotations.LifecyclePhase;
 import org.apache.maven.plugins.annotations.Mojo;
 import org.apache.maven.plugins.annotations.Parameter;
 import org.apache.maven.plugins.annotations.ResolutionScope;
-import org.apache.maven.project.ProjectBuildingRequest;
 import org.apache.maven.shared.artifact.filter.resolve.PatternExclusionsFilter;
 import org.apache.maven.shared.transfer.artifact.resolve.ArtifactResult;
 import org.apache.maven.shared.transfer.dependencies.DefaultDependableCoordinate;
 import org.apache.maven.shared.transfer.dependencies.resolve.DependencyResolver;
 import org.apache.maven.shared.transfer.dependencies.resolve.DependencyResolverException;
 
+import javax.inject.Inject;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Optional;
-import java.util.Set;
-import java.util.stream.Collectors;
+import java.util.*;
 
 /**
  * Mojo downloading and executing the Abort-Mission Flight Evaluation Report module.
@@ -41,8 +34,7 @@ public class AbortMissionFlightEvaluationReportMojo extends AbstractMojo {
     static final String ARTIFACT_ID = "abort.flight-evaluation-report";
     static final String JAR = "jar";
 
-    @Component
-    private DependencyResolver dependencyResolver;
+    private final DependencyResolver dependencyResolver;
     @Parameter(defaultValue = "${session}", readonly = true, required = true)
     private MavenSession session;
     @Parameter(property = "mojo.abortmission.output",
@@ -56,6 +48,11 @@ public class AbortMissionFlightEvaluationReportMojo extends AbstractMojo {
     @Parameter(property = "mojo.abortmission.relaxed", defaultValue = "false")
     private boolean relaxed;
 
+    @Inject
+    public AbortMissionFlightEvaluationReportMojo(final DependencyResolver dependencyResolver) {
+        this.dependencyResolver = dependencyResolver;
+    }
+
     /**
      * Entry point for the module.
      *
@@ -64,16 +61,16 @@ public class AbortMissionFlightEvaluationReportMojo extends AbstractMojo {
     @SuppressWarnings("LocalCanBeFinal")
     public void execute() throws MojoExecutionException {
         try {
-            final File jarFile = resolveMissionReportArtifactJar();
+            final var jarFile = resolveMissionReportArtifactJar();
             getLog().debug("Report generator resolved: " + jarFile.getAbsolutePath());
             getLog().debug("Input file: " + inputFile.getAbsolutePath());
             getLog().debug("Output file: " + outputFile.getAbsolutePath());
-            final List<String> commands = prepareCommands(jarFile);
+            final var commands = prepareCommands(jarFile);
             getLog().info("Executing command: " + commands);
-            final Process javaProcess = createProcess(commands);
-            try (BufferedReader reader = new BufferedReader(new InputStreamReader(javaProcess.getInputStream()))) {
-                final List<String> logLines = reader.lines().collect(Collectors.toList());
-                final int statusCode = javaProcess.waitFor();
+            final var javaProcess = createProcess(commands);
+            try (var reader = new BufferedReader(new InputStreamReader(javaProcess.getInputStream()))) {
+                final var logLines = reader.lines().toList();
+                final var statusCode = javaProcess.waitFor();
                 if (statusCode != 0) {
                     logLines.forEach(getLog()::error);
                     getLog().error("Execution failed with status code: " + statusCode);
@@ -83,6 +80,9 @@ public class AbortMissionFlightEvaluationReportMojo extends AbstractMojo {
                     getLog().info("Execution completed.");
                 }
             }
+        } catch (final InterruptedException e) {
+            Thread.currentThread().interrupt();
+            throw new MojoExecutionException("Error generating report: " + outputFile, e);
         } catch (final Exception e) {
             throw new MojoExecutionException("Error generating report: " + outputFile, e);
         }
@@ -123,8 +123,8 @@ public class AbortMissionFlightEvaluationReportMojo extends AbstractMojo {
      */
     protected File resolveMissionReportArtifactJar()
             throws DependencyResolverException, MojoExecutionException {
-        final Set<ArtifactResult> results = resolveMatchingDependencies();
-        final ArtifactResult reportArtifact = results.stream()
+        final var results = resolveMatchingDependencies();
+        final var reportArtifact = results.stream()
                 .filter(dep -> JAR.equals(dep.getArtifact().getType()))
                 .filter(dep -> ARTIFACT_ID.equals(dep.getArtifact().getArtifactId()))
                 .filter(dep -> GROUP_ID.equals(dep.getArtifact().getGroupId()))
@@ -139,7 +139,7 @@ public class AbortMissionFlightEvaluationReportMojo extends AbstractMojo {
      * @return the coordinates
      */
     protected DefaultDependableCoordinate missionReportCoordinates() {
-        final DefaultDependableCoordinate coordinate = new DefaultDependableCoordinate();
+        final var coordinate = new DefaultDependableCoordinate();
         coordinate.setArtifactId(ARTIFACT_ID);
         coordinate.setGroupId(GROUP_ID);
         coordinate.setType(JAR);
@@ -148,9 +148,9 @@ public class AbortMissionFlightEvaluationReportMojo extends AbstractMojo {
     }
 
     private Set<ArtifactResult> resolveMatchingDependencies() throws DependencyResolverException {
-        final ProjectBuildingRequest buildingRequest = session.getProjectBuildingRequest();
+        final var buildingRequest = session.getProjectBuildingRequest();
         final Set<ArtifactResult> results = new HashSet<>();
-        final Iterable<ArtifactResult> dependencies = dependencyResolver.resolveDependencies(buildingRequest, missionReportCoordinates(),
+        final var dependencies = dependencyResolver.resolveDependencies(buildingRequest, missionReportCoordinates(),
                 new PatternExclusionsFilter(Collections.emptyList()));
         Optional.ofNullable(dependencies).orElse(Collections.emptyList()).forEach(results::add);
         return results;
@@ -163,15 +163,6 @@ public class AbortMissionFlightEvaluationReportMojo extends AbstractMojo {
      */
     public DependencyResolver getDependencyResolver() {
         return dependencyResolver;
-    }
-
-    /**
-     * Setter for dependencyResolver.
-     *
-     * @param dependencyResolver The new value
-     */
-    public void setDependencyResolver(final DependencyResolver dependencyResolver) {
-        this.dependencyResolver = dependencyResolver;
     }
 
     /**

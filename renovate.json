@@ -1,9 +1,9 @@
 {
-  "extends": [
+  "extends" : [
     "config:recommended",
     ":gitSignOff"
   ],
-  "assignees": [
+  "assignees" : [
     "nagyesta"
   ],
   "assigneesSampleSize": 1,
@@ -13,7 +13,7 @@
   "packageRules": [
     {
       "groupName": "Maven dependencies",
-      "matchPackageNames": [
+      "matchPackageNames" : [
         "org.apache.maven:{/,}**",
         "org.apache.maven.shared:{/,}**",
         "org.apache.maven.plugin-tools:{/,}**"
@@ -21,7 +21,7 @@
     },
     {
       "groupName": "JUnit dependencies",
-      "matchPackageNames": [
+      "matchPackageNames" : [
         "junit:{/,}**",
         "org.junit.jupiter:{/,}**",
         "org.junit.platform:{/,}**",
