@@ -61,4 +61,4 @@ conclusions if something is not clear. It is a good practice to give feedback or
 provide suggestions in the form of a question. Code reviews are a dialogue after
 all!
 
-## Thank you!
+## Thank you

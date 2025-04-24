@@ -3,9 +3,9 @@
 ## Err on the safer side
 
 As Abort-Mission is strictly intended to be a development tool, it is **strongly
-recommended to never deploy the Abort-Mission artifacts** together with your 
-production service/product. Although this is not ensuring that it won't be ever a 
-source you would need to consider as a source of risk, it would certainly make it 
+recommended to never deploy the Abort-Mission artifacts** together with your
+production service/product. Although this is not ensuring that it won't be ever a
+source you would need to consider as a source of risk, it would certainly make it
 a bit harder to use for malicious actors.
 
 ## Supported Versions

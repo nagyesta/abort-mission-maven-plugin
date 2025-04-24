@@ -7,14 +7,13 @@ on:
   push:
     branches: [ main ]
     paths:
-      - '.whitesource'
-      - 'pom.xml'
+      - ".whitesource"
+      - "pom.xml"
 
 permissions: read-all
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
 
     steps:
@@ -34,14 +33,10 @@ jobs:
       - name: Build with Maven
         run: >
           ./mvnw
+          -Dsonar.coverage.jacoco.xmlReportPaths=./target/site/jacoco/jacoco.xml
           -Dgpg.keyname=${{ secrets.SIGNING_KEY_ID }}
           -Dgpg.secretKeyring=$(echo ~/.gnupg/secring.gpg)
-          -B clean install
+          -B clean install org.sonarsource.scanner.maven:sonar-maven-plugin:sonar
         env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
           MAVEN_GPG_PASSPHRASE: ${{ secrets.OSSRH_GPG_SECRET_KEY_PASSWORD }}
-      - name: Upload coverage to Codecov
-        uses: codecov/codecov-action@ad3126e916f78f00edff4ed0317cf185271ccc2d # v5.4.2
-        with:
-          token: ${{ secrets.CODECOV_TOKEN }}
-          file: ./target/site/jacoco/jacoco.xml
-          fail_ci_if_error: false
