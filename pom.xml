@@ -4,7 +4,7 @@
     <groupId>com.github.nagyesta.abort-mission</groupId>
     <artifactId>abort-mission-maven-plugin</artifactId>
     <packaging>maven-plugin</packaging>
-    <version>3.2.3</version>
+    <version>3.2.4</version>
     <description>Maven Mojo for Abort-Mission report generation support</description>
     <name>abort-mission-maven-plugin Maven Mojo</name>
     <url>https://github.com/nagyesta/abort-mission-maven-plugin/</url>
@@ -65,35 +65,6 @@
             <url>https://github.com/nagyesta/</url>
         </developer>
     </developers>
-
-    <profiles>
-        <profile>
-            <id>deploy-github</id>
-            <activation>
-                <activeByDefault>false</activeByDefault>
-            </activation>
-            <distributionManagement>
-                <repository>
-                    <id>github</id>
-                    <name>GitHub nagyesta Apache Maven Packages</name>
-                    <url>https://maven.pkg.github.com/nagyesta/abort-mission-maven-plugin</url>
-                </repository>
-            </distributionManagement>
-        </profile>
-        <profile>
-            <id>deploy-ossrh</id>
-            <activation>
-                <activeByDefault>false</activeByDefault>
-            </activation>
-            <distributionManagement>
-                <repository>
-                    <id>ossrh</id>
-                    <name>OSSRH staging repository</name>
-                    <url>https://oss.sonatype.org/service/local/staging/deploy/maven2</url>
-                </repository>
-            </distributionManagement>
-        </profile>
-    </profiles>
 
     <dependencies>
         <dependency>
@@ -379,6 +350,8 @@
                 <extensions>true</extensions>
                 <configuration>
                     <publishingServerId>central</publishingServerId>
+                    <autoPublish>true</autoPublish>
+                    <waitUntil>published</waitUntil>
                 </configuration>
             </plugin>
         </plugins>

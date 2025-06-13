@@ -56,8 +56,7 @@ jobs:
           -Dsonar.coverage.jacoco.xmlReportPaths=./target/site/jacoco/jacoco.xml
           -Dgpg.keyname=${{ secrets.SIGNING_KEY_ID }}
           -Dgpg.secretKeyring=$(echo ~/.gnupg/secring.gpg)
-          -B clean scm:tag verify nexus-staging:deploy org.sonarsource.scanner.maven:sonar-maven-plugin:sonar
-          -P deploy-ossrh
+          -B clean scm:tag verify deploy org.sonarsource.scanner.maven:sonar-maven-plugin:sonar
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
           MAVEN_USERNAME: ${{ secrets.OSSRH_USER }}
