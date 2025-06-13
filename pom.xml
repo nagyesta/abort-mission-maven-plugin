@@ -4,7 +4,7 @@
     <groupId>com.github.nagyesta.abort-mission</groupId>
     <artifactId>abort-mission-maven-plugin</artifactId>
     <packaging>maven-plugin</packaging>
-    <version>3.2.2</version>
+    <version>3.2.3</version>
     <description>Maven Mojo for Abort-Mission report generation support</description>
     <name>abort-mission-maven-plugin Maven Mojo</name>
     <url>https://github.com/nagyesta/abort-mission-maven-plugin/</url>
@@ -31,7 +31,7 @@
         <jacoco-maven-plugin.version>0.8.13</jacoco-maven-plugin.version>
         <maven-shared-utils.version>3.4.2</maven-shared-utils.version>
         <maven-surefire-plugin.version>3.5.3</maven-surefire-plugin.version>
-        <nexus.plugin.version>1.7.0</nexus.plugin.version>
+        <central-publishing.plugin.version>0.7.0</central-publishing.plugin.version>
         <junit-jupiter.version>5.13.1</junit-jupiter.version>
         <junit-platform.version>1.13.1</junit-platform.version>
         <junit.version>4.13.2</junit.version>
@@ -373,14 +373,12 @@
                 </dependencies>
             </plugin>
             <plugin>
-                <groupId>org.sonatype.plugins</groupId>
-                <artifactId>nexus-staging-maven-plugin</artifactId>
-                <version>${nexus.plugin.version}</version>
+                <groupId>org.sonatype.central</groupId>
+                <artifactId>central-publishing-maven-plugin</artifactId>
+                <version>${central-publishing.plugin.version}</version>
                 <extensions>true</extensions>
                 <configuration>
-                    <serverId>ossrh</serverId>
-                    <nexusUrl>https://oss.sonatype.org/</nexusUrl>
-                    <autoReleaseAfterClose>true</autoReleaseAfterClose>
+                    <publishingServerId>central</publishingServerId>
                 </configuration>
             </plugin>
         </plugins>
