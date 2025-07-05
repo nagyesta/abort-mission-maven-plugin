@@ -32,8 +32,8 @@
         <maven-shared-utils.version>3.4.2</maven-shared-utils.version>
         <maven-surefire-plugin.version>3.5.3</maven-surefire-plugin.version>
         <central-publishing.plugin.version>0.8.0</central-publishing.plugin.version>
-        <junit-jupiter.version>5.13.2</junit-jupiter.version>
-        <junit-platform.version>1.13.2</junit-platform.version>
+        <junit-jupiter.version>5.13.3</junit-jupiter.version>
+        <junit-platform.version>1.13.3</junit-platform.version>
         <junit.version>4.13.2</junit.version>
         <mockito-all.version>1.10.19</mockito-all.version>
         <checkstyle.version>9.3</checkstyle.version>
