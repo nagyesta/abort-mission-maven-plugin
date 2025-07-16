@@ -19,7 +19,7 @@
         <project.scm.id>github</project.scm.id>
         <tag>v${project.version}</tag>
         <basedir>${project.basedir}</basedir>
-        <maven-api.version>3.9.10</maven-api.version>
+        <maven-api.version>3.9.11</maven-api.version>
         <maven-plugin-plugin.version>3.15.1</maven-plugin-plugin.version>
         <maven-plugin-tools-annotations.version>3.15.1</maven-plugin-tools-annotations.version>
         <maven-aether-provider.version>3.3.9</maven-aether-provider.version>
