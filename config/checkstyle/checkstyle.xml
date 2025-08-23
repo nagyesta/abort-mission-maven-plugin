@@ -61,6 +61,7 @@
 
     <!-- Checks for Headers                                -->
     <!-- See http://checkstyle.sf.net/config_header.html   -->
+
     <module name="TreeWalker">
 
         <module name="SuppressWarningsHolder"/>
@@ -72,7 +73,7 @@
         </module>
         <module name="JavadocType"/>
         <module name="JavadocVariable">
-            <property name="scope" value="protected"/>
+            <property name="accessModifiers" value="public, protected"/>
         </module>
         <module name="JavadocStyle"/>
 
