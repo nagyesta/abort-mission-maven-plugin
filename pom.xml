@@ -39,7 +39,7 @@
         <checkstyle.version>12.3.1</checkstyle.version>
         <commons-compress.version>1.28.0</commons-compress.version>
         <commons-io.version>2.21.0</commons-io.version>
-        <guava.version>33.5.0-jre</guava.version>
+        <guava.version>33.6.0-jre</guava.version>
     </properties>
 
     <scm>
