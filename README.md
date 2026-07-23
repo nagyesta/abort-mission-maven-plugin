@@ -6,11 +6,13 @@
 [![Maven Central](https://img.shields.io/maven-central/v/com.github.nagyesta.abort-mission/abort-mission-maven-plugin?logo=apache-maven)](https://search.maven.org/artifact/com.github.nagyesta.abort-mission/abort-mission-maven-plugin)
 [![JavaCI](https://img.shields.io/github/actions/workflow/status/nagyesta/abort-mission-maven-plugin/maven.yml?logo=github&branch=main)](https://github.com/nagyesta/abort-mission-maven-plugin/actions/workflows/maven.yml)
 
-[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=nagyesta_abort-mission-maven-plugin&metric=coverage)](https://sonarcloud.io/summary/new_code?id=nagyesta_abort-mission-maven-plugin)
+[![Sonar Coverage](https://img.shields.io/sonar/coverage/nagyesta_abort-mission-maven-plugin?server=https%3A%2F%2Fsonarcloud.io&logo=sonarcloud&logoColor=white)](https://sonarcloud.io/summary/new_code?id=nagyesta_abort-mission-maven-plugin)
 [![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=nagyesta_abort-mission-maven-plugin&metric=sqale_rating)](https://sonarcloud.io/summary/new_code?id=nagyesta_abort-mission-maven-plugin)
 [![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=nagyesta_abort-mission-maven-plugin&metric=security_rating)](https://sonarcloud.io/summary/new_code?id=nagyesta_abort-mission-maven-plugin)
 [![last_commit](https://img.shields.io/github/last-commit/nagyesta/abort-mission-maven-plugin?logo=git)](https://img.shields.io/github/last-commit/nagyesta/abort-mission-maven-plugin?logo=git)
 [![wiki](https://img.shields.io/badge/See-Wiki-informational)](https://github.com/nagyesta/abort-mission/wiki)
+
+[<img src="https://raw.githubusercontent.com/snyk-labs/secure-developer-sample-repo/main/Scanned_By_Snyk.png" alt="Scanned By Snyk Badge" width="10%" style="display: inline-block;">](https://snyk.io/?utm_source=open-source&utm_medium=pg-ptr&utm_campaign=ref-2501-osp&utm_content=pg-cta)
 
 Abort-Mission is a lightweight Java library providing flexible test abortion support for test groups to allow fast
 failures.
